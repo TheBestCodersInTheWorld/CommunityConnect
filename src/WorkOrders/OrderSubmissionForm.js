@@ -10,7 +10,7 @@ class OrderSubmissionForm extends React.Component {
         this.form = {
             name: '',
             email: '',
-            equipmentId: '',
+            foodType: '',
             equipmentType: '',
             priority: 1,
             facilityId: '',
@@ -24,7 +24,7 @@ class OrderSubmissionForm extends React.Component {
         axios.post('http://localhost:8000/workorder_submission', {
             name: this.form.name,
             email: this.form.email,
-            equipment_id: this.form.equipmentId,
+            foodType: this.form.foodType,
             equipment_type: this.form.equipmentType,
             priority: this.form.priority,
             facility: this.form.facilityId,
@@ -32,6 +32,7 @@ class OrderSubmissionForm extends React.Component {
         });
         this.setShowToast(true);
     }
+
     handleChange = e => {
         this.form[e.target.name] = e.target.value;
 
@@ -82,12 +83,12 @@ class OrderSubmissionForm extends React.Component {
 
                             </Form.Group>
 
-                            <Form.Label>Equipment ID</Form.Label>
+                            <Form.Label>Food Type</Form.Label>
                             <Form.Control
                                 size="sm"
                                 onChange={this.handleChange}
-                                name='equipmentId'
-                                placeholder="Equipment ID" />
+                                name='foodType'
+                                placeholder="Food Type" />
                             <br />
 
                             <Form.Label>Equipment Type</Form.Label>

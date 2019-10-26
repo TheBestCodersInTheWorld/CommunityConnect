@@ -26,6 +26,7 @@ class App extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Nav.Link onClick={() => this.navigate('home')}>Home</Nav.Link>
           <Nav.Link onClick={() => this.navigate('results')}>Results</Nav.Link>
+          
         </Navbar>
         {this.state.route === 'home'
           ? <OrderSubmission />
