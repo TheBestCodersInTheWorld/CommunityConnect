@@ -3,7 +3,7 @@ import logo from './logo.png';
 import './App.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import OrderSubmission from './OrderSubmission';
-import Results from './Results.js';
+import TechnicianForm from './Technician/TechnicianForm.js';
 
 class App extends React.Component {
 
@@ -29,7 +29,7 @@ class App extends React.Component {
         </Navbar>
         {this.state.route === 'home'
           ? <OrderSubmission />
-          : <Results />}
+          : <TechnicianForm />}
       </div>
     );
   }

@@ -3,7 +3,9 @@ import logo from './logo.png';
 import './App.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import OrderSubmission from './OrderSubmission';
-import Results from './Results.js';
+import TechnicianForm from './Technician/TechnicianForm.js';
+import Metrics from './Metrics/Metrics.js';
+import Demo from './Demo/Demo.js';
 
 class App extends React.Component {
 
@@ -22,14 +24,19 @@ class App extends React.Component {
         <Navbar bg="light" >
           <img style={{ height: '100%', width: '2em', marginRight: '0.5em' }} alt="logo" src={logo} />
 
-          <Navbar.Brand href="#home">Community Connect</Navbar.Brand>
+          <Navbar.Brand href="#home">Chevron | WorkOrders</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Nav.Link onClick={() => this.navigate('home')}>Home</Nav.Link>
           <Nav.Link onClick={() => this.navigate('results')}>Results</Nav.Link>
         </Navbar>
         {this.state.route === 'home'
           ? <OrderSubmission />
-          : <Results />}
+          : (this.state.route === 'technician'
+            ? <TechnicianForm />
+            : (this.state.route === 'metrics'
+              ? <Metrics />
+              : <Demo />
+            ))}
       </div>
     );
   }
