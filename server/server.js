@@ -5,6 +5,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var mongoose = require('mongoose');
+var models = require('./models.js');
+var FoodSubmission = models.FoodSubmission;
 
 mongoose.connect(require('./connection.js'), { useFindAndModify: false });
 
@@ -14,21 +16,17 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.get('/food', (req, res) => {
-    WorkOrder.find({
-    }, function (err, doc) {
-        res.status(200).send(doc);
-    });
+app.post('/fnb_submission', (req, res) => {
+    console.log("we are in the fnb submission");
+    console.log(req.body);
+    var foodSubmission = new FoodSubmission({
+        name: req.body.name,
+        email: req.body.email,
+        foodType: req.body.foodType,
+    })
+    foodSubmission.save();
+    res.status(200).send("Thanks for filling out the food info:)")
 })
-
-
-// make a GET request to "fnbconnect.com/food"
-// =>
-// server.js (running on some server)
-// app.get('/food') {
-//     // get all the foods 
-// }
-
 
 const port = process.env.PORT || 8000;
 
