@@ -28,6 +28,13 @@ app.post('/fnb_submission', (req, res) => {
     res.status(200).send("Thanks for filling out the food info:)")
 })
 
+app.get('/fnb_get', (req, res) => {
+    FoodSubmission.find({
+    }, function (err, doc) {
+        res.json(doc)
+    })
+})
+
 const port = process.env.PORT || 8000;
 
 // remember to run webpack or this path wont find the files needed for the bundle

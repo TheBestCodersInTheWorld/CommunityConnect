@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import MapView from './WorkOrders/Map/MapView'
+import ResultsTable from './WorkOrders/ResultsTable.js'
 import OrderSubmissionForm from './WorkOrders/OrderSubmissionForm';
 import { Container, Row, Col } from 'react-bootstrap'
 
@@ -9,7 +9,7 @@ const WorkOrders = () => (
         <Container>
             <Row>
                 <Col xs={4}><OrderSubmissionForm/></Col>
-                {/* <Col xs={8}><MapView /></Col> */}
+                <Col xs={8}><ResultsTable /></Col>
             </Row>
         </Container>
 

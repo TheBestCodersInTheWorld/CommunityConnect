@@ -27,12 +27,13 @@ class OrderSubmissionForm extends React.Component {
 
     handleChange = e => {
         this.form[e.target.name] = e.target.value;
-
         // this.setState({ [e.target.name]: e.target.value });
     }
+
     setShowToast = showToast => {
         this.setState({ showToast })
     }
+
     render() {
         return (
             <div>
