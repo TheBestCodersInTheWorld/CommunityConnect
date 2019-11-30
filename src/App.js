@@ -1,8 +1,8 @@
 import React from 'react';
-import logo from './logo.png';
-import './App.css';
 import { Navbar, Nav } from 'react-bootstrap';
-import OrderSubmission from './OrderSubmission';
+import './App.css';
+import logo from './assets/logo.png';
+import Home from './home/Home';
 import Results from './Results.js';
 
 class App extends React.Component {
@@ -29,7 +29,7 @@ class App extends React.Component {
           
         </Navbar>
         {this.state.route === 'home'
-          ? <OrderSubmission />
+          ? <Home />
           : <Results />}
       </div>
     );

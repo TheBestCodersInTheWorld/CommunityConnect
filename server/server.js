@@ -17,20 +17,19 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.post('/fnb_submission', (req, res) => {
-    console.log("we are in the fnb submission");
-    console.log(req.body);
     var foodSubmission = new FoodSubmission({
         name: req.body.name,
         email: req.body.email,
         foodType: req.body.foodType,
+        notes: req.body.notes
     })
     foodSubmission.save();
     res.status(200).send("Thanks for filling out the food info:)")
 })
 
 app.get('/fnb_get', (req, res) => {
-    FoodSubmission.find({
-    }, function (err, doc) {
+    FoodSubmission.find({}, {_id: 0, __v: 0, updatedAt: 0}, function (err, doc) {
+        console.log(doc)
         res.json(doc)
     })
 })

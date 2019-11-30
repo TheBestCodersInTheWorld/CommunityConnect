@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 
 var foodSubmissionSchema = mongoose.Schema({
-    name: {type:String, default:"default name"},
-    email: {type:String, default:"default@email.com"},
-    foodType: {type:String, default:"default food"},
+    name: {type:String, default:""},
+    email: {type:String, default:""},
+    foodType: {type:String, default:""},
+    notes: {type: String, default:""}
 }, {
     timestamps: true
 });

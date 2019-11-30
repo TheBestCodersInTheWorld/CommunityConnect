@@ -2,15 +2,16 @@ import React from 'react';
 import '../App.css';
 import { Form, Button, Card, Toast } from 'react-bootstrap';
 import axios from 'axios';
-import toastLogo from './chevron_toast_logo.png';
+import toastLogo from '../assets/logo.png';
 
-class OrderSubmissionForm extends React.Component {
+class FoodSubmissionForm extends React.Component {
     constructor(props) {
         super(props);
         this.form = {
             name: '',
             email: '',
             foodType: '',
+            notes: ''
         };
         this.state = {
             showToast: false
@@ -21,6 +22,7 @@ class OrderSubmissionForm extends React.Component {
             name: this.form.name,
             email: this.form.email,
             foodType: this.form.foodType,
+            notes: this.form.notes
         });
         this.setShowToast(true);
     }
@@ -59,30 +61,41 @@ class OrderSubmissionForm extends React.Component {
                     </Card.Header>
                     <Card.Body>
                         <Form>
+                            <Form.Group controlId="formBasicNotes">
                             <Form.Label>Name</Form.Label>
                             <Form.Control
                                 size="sm"
                                 name='name'
                                 onChange={this.handleChange}
                                 placeholder="First and last name" />
-                            <br />
+                            </Form.Group>
+
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control
                                     size="sm"
                                     onChange={this.handleChange}
                                     name='email'
-                                    type="email" placeholder="Enter email" />
+                                    type="email"
+                                    placeholder="Enter email" />
                             </Form.Group>
 
-                            <Form.Group controlId="formBasicEmail">
+                            <Form.Group controlId="formBasicFoodType">
                             <Form.Label>Food Type</Form.Label>
                             <Form.Control
                                 size="sm"
                                 onChange={this.handleChange}
                                 name='foodType'
-                                placeholder="Food Type" />
-                            <br />
+                                placeholder="Type of food like burgers, cake, etc" />
+                            </Form.Group>
+
+                            <Form.Group controlId="formBasicNotes">
+                            <Form.Label>Notes</Form.Label>
+                            <Form.Control
+                                size="sm"
+                                onChange={this.handleChange}
+                                name='notes'
+                                placeholder="Notes on quantity of food, etc" />
                             </Form.Group>
                             
                             <Button variant="primary" onClick={click => this.onSubmit()}>
@@ -96,4 +109,4 @@ class OrderSubmissionForm extends React.Component {
     }
 }
 
-export default OrderSubmissionForm;
+export default FoodSubmissionForm;
