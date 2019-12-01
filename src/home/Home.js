@@ -16,7 +16,7 @@ class Home extends React.Component {
     }
 
     getData = () => {
-        var endpoint = 'http://localhost:8000/fnb_get';
+        var endpoint = `${window.location.host}/fnb_get`;
         // the axios get method takes a GET endpoint
         axios.get(endpoint)
             .then(res => {
