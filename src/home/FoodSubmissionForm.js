@@ -87,7 +87,7 @@ class FoodSubmissionForm extends React.Component {
                                 size="sm"
                                 onChange={this.handleChange}
                                 name='foodType'
-                                placeholder="Type of food like burgers, cake, etc" />
+                                placeholder="Type of food like pasta, cake, etc" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicNotes">

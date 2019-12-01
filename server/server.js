@@ -1,6 +1,7 @@
 //create data base
 var path = require('path');
 var express = require('express');
+var moment = require('moment');
 var bodyParser = require('body-parser');
 var app = express();
 var mongoose = require('mongoose');
@@ -41,8 +42,10 @@ app.post('/fnb_submission', (req, res) => {
 })
 
 app.get('/fnb_get', (req, res) => {
+    var startOfWeek = moment().startOf('week').toDate();
+    FoodSubmission.deleteMany({ createdAt: { $lte: startOfWeek } });
     FoodSubmission.find({}, {_id: 0, __v: 0, updatedAt: 0}, function (err, doc) {
-        console.log(doc)
+        // console.log(doc)
         res.json(doc)
     })
 })

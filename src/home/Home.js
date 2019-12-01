@@ -17,6 +17,7 @@ class Home extends React.Component {
 
     getData = () => {
         var endpoint = `/fnb_get`;
+        let date = new Date();
         // the axios get method takes a GET endpoint
         axios.get(endpoint)
             .then(res => {

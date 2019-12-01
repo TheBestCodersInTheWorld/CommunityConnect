@@ -25,7 +25,7 @@ class App extends React.Component {
           <Navbar.Brand href="#home">Community Connect</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Nav.Link onClick={() => this.navigate('home')}>Home</Nav.Link>
-          <Nav.Link onClick={() => this.navigate('results')}>Results</Nav.Link>
+          <Nav.Link onClick={() => this.navigate('about')}>About</Nav.Link>
           
         </Navbar>
         {this.state.route === 'home'
