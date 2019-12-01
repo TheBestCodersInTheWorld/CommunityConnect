@@ -23,13 +23,14 @@ class FoodSubmissionForm extends React.Component {
             email: this.form.email,
             foodType: this.form.foodType,
             notes: this.form.notes
+        }).then(res => {
+            this.props.getData();
         });
         this.setShowToast(true);
     }
 
     handleChange = e => {
         this.form[e.target.name] = e.target.value;
-        // this.setState({ [e.target.name]: e.target.value });
     }
 
     setShowToast = showToast => {

@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import { Form, Button, Card, Toast } from 'react-bootstrap';
 import Table from 'rc-table';
 
 
@@ -14,34 +12,14 @@ class ResultsTable extends React.Component {
     }
 
     componentDidMount() {
-        this.getData();
+        this.props.getData();
     }
 
-    getData() {
-        console.log("im in the get Data section?")
-        var endpoint = 'http://localhost:8000/fnb_get';
-        // the axios get method takes a GET endpoint
-        axios.get(endpoint)
-            .then(res => {
-                console.log(res);
-                var data = res.data;
-                if (data === []) return;
-                console.log(data)
-                let columns = []
-                Object.keys(data[0]).forEach(key => {
-                    columns.push({
-                        title: key,
-                        dataIndex: key,
-                        key: key,
-                        width: 100
-                    })
-                })
-                this.setState({ columns })
-                this.setState({ data })
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
+    componentWillReceiveProps(props) {
+        if (props.data.length !== this.state.data.length) {
+            console.log("setting the state with updated data")
+            this.setState({data: props.data, columns: props.columns});
+        }
     }
 
     render() {
