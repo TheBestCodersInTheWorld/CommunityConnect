@@ -18,7 +18,7 @@ class FoodSubmissionForm extends React.Component {
         };
     }
     onSubmit() {
-        axios.post(`${window.location.host}/:8000/fnb_submission`, {
+        axios.post(`/fnb_submission`, {
             name: this.form.name,
             email: this.form.email,
             foodType: this.form.foodType,
