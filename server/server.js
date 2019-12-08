@@ -35,7 +35,8 @@ app.post('/fnb_submission', (req, res) => {
         name: req.body.name,
         email: req.body.email,
         foodType: req.body.foodType,
-        notes: req.body.notes
+        notes: req.body.notes,
+        date: req.body.date
     })
     foodSubmission.save();
     res.status(200).send("Thanks for filling out the food info:)")
@@ -43,11 +44,15 @@ app.post('/fnb_submission', (req, res) => {
 
 app.get('/fnb_get', (req, res) => {
     var startOfWeek = moment().startOf('week').toDate();
-    FoodSubmission.deleteMany({ createdAt: { $lte: startOfWeek } });
-    FoodSubmission.find({}, {_id: 0, __v: 0, updatedAt: 0}, function (err, doc) {
+    var endOfWeek = moment().endOf('week').toDate();
+    console.log(startOfWeek)
+    console.log(endOfWeek)
+    console.log("im in fnb get")
+    FoodSubmission.find({}, {_id: 0, __v: 0, updatedAt: 0, date: {$gte: startOfWeek, $lte: endOfWeek}}, function (err, doc) {
         // console.log(doc)
         res.json(doc)
     })
+    console.log("im in the thing")
 })
 
 const port = process.env.PORT || 8000;

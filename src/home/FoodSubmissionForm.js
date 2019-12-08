@@ -3,6 +3,8 @@ import '../App.css';
 import { Form, Button, Card, Toast } from 'react-bootstrap';
 import axios from 'axios';
 import toastLogo from '../assets/logo.png';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
 
 class FoodSubmissionForm extends React.Component {
     constructor(props) {
@@ -11,10 +13,11 @@ class FoodSubmissionForm extends React.Component {
             name: '',
             email: '',
             foodType: '',
-            notes: ''
+            notes: '',
         };
         this.state = {
-            showToast: false
+            showToast: false,
+            date: ''
         };
     }
     onSubmit() {
@@ -22,7 +25,8 @@ class FoodSubmissionForm extends React.Component {
             name: this.form.name,
             email: this.form.email,
             foodType: this.form.foodType,
-            notes: this.form.notes
+            notes: this.form.notes,
+            date: this.state.date
         }).then(res => {
             this.props.getData();
         });
@@ -35,6 +39,11 @@ class FoodSubmissionForm extends React.Component {
 
     setShowToast = showToast => {
         this.setState({ showToast })
+    }
+
+    handleDateChange = date => {
+        this.setState({date});
+        console.log(this.state.date);
     }
 
     render() {
@@ -98,10 +107,15 @@ class FoodSubmissionForm extends React.Component {
                                 name='notes'
                                 placeholder="Notes on quantity of food, etc" />
                             </Form.Group>
+
+                            <Form.Label>Put in the day you are going</Form.Label>
+                            <DayPickerInput onDayChange={day => this.handleDateChange(day)} />
                             
-                            <Button variant="primary" onClick={click => this.onSubmit()}>
-                                Submit
-                            </Button>
+                            <div style={{paddingTop:'1em'}}>
+                                <Button variant="primary" onClick={click => this.onSubmit()}>
+                                    Submit
+                                </Button>
+                            </div>
                         </Form>
                     </Card.Body>
                 </Card>
