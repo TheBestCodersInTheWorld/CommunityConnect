@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.post('/fnb_submission', (req, res) => {
-    var foodSubmission = new FoodSubmission({
+    let foodSubmission = new FoodSubmission({
         name: req.body.name,
         email: req.body.email,
         foodType: req.body.foodType,
@@ -43,16 +43,11 @@ app.post('/fnb_submission', (req, res) => {
 })
 
 app.get('/fnb_get', (req, res) => {
-    var startOfWeek = moment().startOf('week').toDate();
-    var endOfWeek = moment().endOf('week').toDate();
-    console.log(startOfWeek)
-    console.log(endOfWeek)
-    console.log("im in fnb get")
-    FoodSubmission.find({}, {_id: 0, __v: 0, updatedAt: 0, date: {$gte: startOfWeek, $lte: endOfWeek}}, function (err, doc) {
-        // console.log(doc)
-        res.json(doc)
+    let startOfWeek = new Date(moment().startOf('week').toISOString());
+    let endOfWeek = new Date(moment().endOf('week').toISOString());
+    FoodSubmission.find({date: {$gte: startOfWeek, $lte: endOfWeek}}, '-_id -__v -updatedAt -createdAt', function (err, doc) {
+        res.json(doc ? doc : {});
     })
-    console.log("im in the thing")
 })
 
 const port = process.env.PORT || 8000;
@@ -62,7 +57,7 @@ const port = process.env.PORT || 8000;
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('File Not Found');
+    let err = new Error('404 Error');
     err.status = 404;
     next(err);
 });
@@ -77,5 +72,5 @@ app.use(function (req, res, next) {
 })
 
 app.listen(port, () => {
-    console.log(`server is running on ${port}`);
+    console.log(`server and client are now running on ${port}`);
 });

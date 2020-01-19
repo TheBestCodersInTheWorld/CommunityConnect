@@ -5,7 +5,7 @@ var foodSubmissionSchema = mongoose.Schema({
     email: {type:String, default:""},
     foodType: {type:String, default:""},
     notes: {type: String, default:""},
-    date: {type: String, default:""}
+    date: {type: Date, default:""}
 }, {
     timestamps: true
 });

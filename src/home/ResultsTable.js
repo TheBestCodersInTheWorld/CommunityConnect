@@ -17,7 +17,6 @@ class ResultsTable extends React.Component {
 
     componentWillReceiveProps(props) {
         if (props.data.length !== this.state.data.length) {
-            console.log("setting the state with updated data")
             this.setState({data: props.data, columns: props.columns});
         }
     }

@@ -51,11 +51,6 @@ class FoodSubmissionForm extends React.Component {
             <div>
                 <Toast  style={{ position: 'absolute', top: '0px', left: '0px', zIndex: 999 }} onClose={() => this.setShowToast(false)} show={this.state.showToast} delay={4000} autohide>
                     <Toast.Header>
-                        <img
-                            src="holder.js/20x20?text=%20"
-                            className="rounded mr-2"
-                            alt=""
-                        />
                         <strong className="mr-auto">
                             <img style={{ height: '1em', width: '1em' }} src={toastLogo} alt="logo"></img> Thank you for your submission. </strong>
                         <small>0s ago</small>

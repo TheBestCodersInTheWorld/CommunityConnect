@@ -13,11 +13,10 @@ CommunityConnect is a fullstack web application that allows users to say what fo
 
 you can use cmd + n will get you a new terminal window
 
-### start the app server (no server at the moment)
-`npm run server`
-
-### start the client
+### start the client and server (this is a hack to get around browsers blocking message passing between seperate resources)
 `npm run start`
+
+** NOTE: make sure to build the client, npm run start simply serves the client that is statically built **
 
 ## Collaboration
 

@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import ResultsTable from './ResultsTable'
 import FoodSubmissionForm from './FoodSubmissionForm';
+var moment = require('moment');
 
 
 class Home extends React.Component {
@@ -23,6 +24,11 @@ class Home extends React.Component {
             .then(res => {
                 var data = res.data;
                 if (data === []) return;
+                for (let i = 0; i < data.length; i++) {
+                    if (data[i].date) {
+                        data[i].date = moment(data[i].date).format('MM-DD-YYYY')
+                    };
+                }
                 let columns = []
                 Object.keys(data[0]).forEach(key => {
                     columns.push({
