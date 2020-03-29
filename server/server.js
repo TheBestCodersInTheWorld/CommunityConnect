@@ -43,11 +43,16 @@ app.post('/fnb_submission', (req, res) => {
 })
 
 app.get('/fnb_get', (req, res) => {
-    let startOfWeek = new Date(moment().startOf('week').toISOString());
-    let endOfWeek = new Date(moment().endOf('week').toISOString());
-    FoodSubmission.find({date: {$gte: startOfWeek, $lte: endOfWeek}}, '-_id -__v -updatedAt -createdAt', function (err, doc) {
+    // let startOfWeek = new Date(moment().startOf('week').toISOString());
+    // let endOfWeek = new Date(moment().endOf('week').toISOString());
+    let today = new Date(moment().toISOString());
+    // FoodSubmission.find({date: {$gte: startOfWeek, $lte: endOfWeek}}, '-_id -__v -updatedAt -createdAt', function (err, doc) {
+    //     res.json(doc ? doc : {});
+    // })
+    FoodSubmission.find({date: {$gte: today}}, '-_id -__v -updatedAt -createdAt', function (err, doc) {
         res.json(doc ? doc : {});
-    })
+    }).sort({date: 1})
+
 })
 
 const port = process.env.PORT || 8000;
