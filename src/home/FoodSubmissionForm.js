@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import { Form, Button, Card, Toast } from 'react-bootstrap';
 import axios from 'axios';
-import toastLogo from '../assets/logo.png';
+import toastLogo from '../assets/logo.svg';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
