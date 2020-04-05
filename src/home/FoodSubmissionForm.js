@@ -10,6 +10,7 @@ class FoodSubmissionForm extends React.Component {
     constructor(props) {
         super(props);
         this.form = {
+            going: '',
             name: '',
             email: '',
             foodType: '',
@@ -24,6 +25,7 @@ class FoodSubmissionForm extends React.Component {
         axios.post(`/fnb_submission`, {
             name: this.form.name,
             email: this.form.email,
+            canGo: this.form.going,
             foodType: this.form.foodType,
             notes: this.form.notes,
             date: this.state.date
@@ -34,7 +36,10 @@ class FoodSubmissionForm extends React.Component {
     }
 
     handleChange = e => {
+        console.log(e.target.value)
         this.form[e.target.name] = e.target.value;
+        console.log("we're handling a change!")
+        console.log(this.form);
     }
 
     setShowToast = showToast => {
@@ -66,6 +71,16 @@ class FoodSubmissionForm extends React.Component {
                     </Card.Header>
                     <Card.Body>
                         <Form>
+                            <Form.Group controlId="formBasicGoing">
+                                <Form.Label>I Can Go</Form.Label>
+                                <Form.Check
+                                    name="going"
+                                    type="switch"
+                                    onChange={this.handleChange}
+                                    id="custom-switch"
+                                    label="Going"
+                                />
+                            </Form.Group>
                             <Form.Group controlId="formBasicNotes">
                             <Form.Label>Name</Form.Label>
                             <Form.Control

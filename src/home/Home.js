@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Button, Col } from 'react-bootstrap'
 import axios from 'axios';
 
 import ResultsTable from './ResultsTable'
@@ -49,7 +49,9 @@ class Home extends React.Component {
             <div>
                 <Container>
                     <Row>
-                        <Col className="section" xs={4}><FoodSubmissionForm getData={this.getData}/></Col>
+                        <Col className="section" xs={4}>
+                            <FoodSubmissionForm getData={this.getData}/>
+                        </Col>
                         <Col className="section" xs={8}>
                             <ResultsTable
                                 getData={this.getData}

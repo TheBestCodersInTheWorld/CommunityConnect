@@ -34,6 +34,7 @@ app.post('/fnb_submission', (req, res) => {
     let foodSubmission = new FoodSubmission({
         name: req.body.name,
         email: req.body.email,
+        canGo: req.body.canGo,
         foodType: req.body.foodType,
         notes: req.body.notes,
         date: req.body.date
