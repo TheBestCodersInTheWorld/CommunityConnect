@@ -18,7 +18,8 @@ class FoodSubmissionForm extends React.Component {
         };
         this.state = {
             showToast: false,
-            date: ''
+            date: '',
+            going: true
         };
     }
     onSubmit() {
@@ -75,8 +76,9 @@ class FoodSubmissionForm extends React.Component {
                                 <Form.Label>I Can Go</Form.Label>
                                 <Form.Check
                                     name="going"
+                                    checked={this.state.going}
                                     type="switch"
-                                    onChange={this.handleChange}
+                                    onChange={(checked) => { this.setState({ going: !this.state.going}) }}
                                     id="custom-switch"
                                     label="Going"
                                 />
@@ -99,15 +101,18 @@ class FoodSubmissionForm extends React.Component {
                                     type="email"
                                     placeholder="Enter email" />
                             </Form.Group>
+                            
+                            {this.state.going &&
+                                <Form.Group controlId="formBasicFoodType">
+                                <Form.Label>Food Type</Form.Label>
+                                <Form.Control
+                                    size="sm"
+                                    onChange={this.handleChange}
+                                    name='foodType'
+                                    placeholder="Type of food like pasta, cake, etc" />
+                                </Form.Group> 
+                            }
 
-                            <Form.Group controlId="formBasicFoodType">
-                            <Form.Label>Food Type</Form.Label>
-                            <Form.Control
-                                size="sm"
-                                onChange={this.handleChange}
-                                name='foodType'
-                                placeholder="Type of food like pasta, cake, etc" />
-                            </Form.Group>
 
                             <Form.Group controlId="formBasicNotes">
                             <Form.Label>Notes</Form.Label>
