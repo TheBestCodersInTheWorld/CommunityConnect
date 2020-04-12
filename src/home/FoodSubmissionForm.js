@@ -10,7 +10,6 @@ class FoodSubmissionForm extends React.Component {
     constructor(props) {
         super(props);
         this.form = {
-            going: '',
             name: '',
             email: '',
             foodType: '',
@@ -18,14 +17,15 @@ class FoodSubmissionForm extends React.Component {
         };
         this.state = {
             showToast: false,
-            date: ''
+            date: '',
+            going: true
         };
     }
     onSubmit() {
         axios.post(`/fnb_submission`, {
             name: this.form.name,
             email: this.form.email,
-            canGo: this.form.going,
+            canGo: this.state.going,
             foodType: this.form.foodType,
             notes: this.form.notes,
             date: this.state.date
@@ -36,10 +36,7 @@ class FoodSubmissionForm extends React.Component {
     }
 
     handleChange = e => {
-        console.log(e.target.value)
         this.form[e.target.name] = e.target.value;
-        console.log("we're handling a change!")
-        console.log(this.form);
     }
 
     setShowToast = showToast => {
@@ -75,8 +72,12 @@ class FoodSubmissionForm extends React.Component {
                                 <Form.Label>I Can Go</Form.Label>
                                 <Form.Check
                                     name="going"
+                                    checked={this.state.going}
                                     type="switch"
-                                    onChange={this.handleChange}
+                                    onChange={(checked) => {
+                                        this.form.foodType = ""
+                                        this.setState({going: !this.state.going});
+                                    }}
                                     id="custom-switch"
                                     label="Going"
                                 />
@@ -99,15 +100,18 @@ class FoodSubmissionForm extends React.Component {
                                     type="email"
                                     placeholder="Enter email" />
                             </Form.Group>
-
-                            <Form.Group controlId="formBasicFoodType">
-                            <Form.Label>Food Type</Form.Label>
-                            <Form.Control
-                                size="sm"
-                                onChange={this.handleChange}
-                                name='foodType'
-                                placeholder="Type of food like pasta, cake, etc" />
-                            </Form.Group>
+                            
+                            {
+                                this.state.going &&
+                                <Form.Group controlId="formBasicFoodType">
+                                <Form.Label>Food Type</Form.Label>
+                                <Form.Control
+                                    size="sm"
+                                    onChange={this.handleChange}
+                                    name='foodType'
+                                    placeholder="Type of food like pasta, cake, etc" />
+                                </Form.Group>
+                            }
 
                             <Form.Group controlId="formBasicNotes">
                             <Form.Label>Notes</Form.Label>
@@ -117,7 +121,12 @@ class FoodSubmissionForm extends React.Component {
                                 name='notes'
                                 placeholder="Notes on quantity of food, etc" />
                             </Form.Group>
-
+                            {/* HOMEWORK: if this.state.going is true this should say "you are going" else
+                                            it should say "you are not going"
+                                            remember the conditional rendering we did for 
+                                            the form above for foodType.
+                                            {boolean ? "yes" : "no"}
+                            */}
                             <Form.Label>Put in the day you are going</Form.Label>
                             <DayPickerInput onDayChange={day => this.handleDateChange(day)} />
                             

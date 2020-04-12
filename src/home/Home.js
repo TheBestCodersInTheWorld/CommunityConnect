@@ -25,8 +25,10 @@ class Home extends React.Component {
                 var data = res.data;
                 if (data === []) return;
                 for (let i = 0; i < data.length; i++) {
+                    console.log(data[i])
                     if (data[i].date) {
-                        data[i].date = moment(data[i].date).format('MM-DD-YYYY')
+                        data[i].date = moment(data[i].date).format('MM-DD-YYYY');
+                        data[i].canGo = data[i].canGo ? "yes" : "no";
                     };
                 }
                 let columns = []
