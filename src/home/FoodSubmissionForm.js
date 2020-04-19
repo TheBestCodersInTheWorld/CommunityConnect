@@ -69,7 +69,7 @@ class FoodSubmissionForm extends React.Component {
                     <Card.Body>
                         <Form>
                             <Form.Group controlId="formBasicGoing">
-                                <Form.Label>I Can Go</Form.Label>
+
                                 <Form.Check
                                     name="going"
                                     checked={this.state.going}
@@ -121,13 +121,7 @@ class FoodSubmissionForm extends React.Component {
                                 name='notes'
                                 placeholder="Notes on quantity of food, etc" />
                             </Form.Group>
-                            {/* HOMEWORK: if this.state.going is true this should say "you are going" else
-                                            it should say "you are not going"
-                                            remember the conditional rendering we did for 
-                                            the form above for foodType.
-                                            {boolean ? "yes" : "no"}
-                            */}
-                            <Form.Label>Put in the day you are going</Form.Label>
+                            <Form.Label>Put in the day you are {this.state.going ? "" : "not "}going</Form.Label>
                             <DayPickerInput onDayChange={day => this.handleDateChange(day)} />
                             
                             <div style={{paddingTop:'1em'}}>

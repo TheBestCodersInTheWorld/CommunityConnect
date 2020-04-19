@@ -4,6 +4,7 @@ import './App.css';
 import logo from './assets/logo.svg';
 import Home from './home/Home';
 import About from './About.js';
+import Admin from './Admin.js';
 
 class App extends React.Component {
 
@@ -26,11 +27,16 @@ class App extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Nav.Link onClick={() => this.navigate('home')}>Home</Nav.Link>
           <Nav.Link onClick={() => this.navigate('about')}>About</Nav.Link>
+          <Nav.Link onClick={() => this.navigate('admin')}>Admin</Nav.Link>
+
           
         </Navbar>
         {this.state.route === 'home'
           ? <Home />
-          : <About />}
+          : this.state.route === 'about' 
+            ?  <About />
+            : <Admin />
+        }
       </div>
     );
   }

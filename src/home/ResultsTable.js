@@ -30,7 +30,7 @@ class ResultsTable extends React.Component {
 
         return (
             <div>
-                <h2>Food for this week!</h2>
+                <h2>Food Submissions!</h2>
                 <Table bodyStyle={bodyStyle} className="table" columns={this.state.columns} data={this.state.data} />
             </div>
         )
