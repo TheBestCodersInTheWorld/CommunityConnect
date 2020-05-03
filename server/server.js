@@ -40,8 +40,17 @@ app.post('/fnb_submission', (req, res) => {
         date: req.body.date
     })
     foodSubmission.save();
-    res.status(200).send("Thanks for filling out the food info:)")
-})
+    res.status(200).send("Thanks for filling out the food info:)");
+});
+
+app.post('/fnb_password', (req, res) => {
+    let password = req.body.password;
+    if (password === "please") {
+        res.status(200).send("correct password");
+    } else {
+        res.status(401).send("incorrect password");
+    }
+});
 
 app.get('/fnb_get', (req, res) => {
     // let startOfWeek = new Date(moment().startOf('week').toISOString());

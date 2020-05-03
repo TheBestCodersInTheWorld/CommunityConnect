@@ -3,8 +3,8 @@ import { Navbar, Nav } from 'react-bootstrap';
 import './App.css';
 import logo from './assets/logo.svg';
 import Home from './home/Home';
-import About from './About.js';
-import Admin from './Admin.js';
+import About from './about/About.js';
+import AdminLogin from './admin/AdminLogin.js';
 
 class App extends React.Component {
 
@@ -35,7 +35,7 @@ class App extends React.Component {
           ? <Home />
           : this.state.route === 'about' 
             ?  <About />
-            : <Admin />
+            : <AdminLogin />
         }
       </div>
     );

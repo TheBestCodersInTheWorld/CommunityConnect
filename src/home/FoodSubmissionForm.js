@@ -45,7 +45,6 @@ class FoodSubmissionForm extends React.Component {
 
     handleDateChange = date => {
         this.setState({date});
-        console.log(this.state.date);
     }
 
     render() {
