@@ -1,8 +1,8 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
 import { Form, Button, Card, Toast } from "react-bootstrap";
-import toastLogo from "./assets/logo.svg";
-import "./App.css";
+import toastLogo from "../assets/logo.svg";
+import "../App.css";
 import axios from 'axios';
 import Admin from './Admin.js';
 
