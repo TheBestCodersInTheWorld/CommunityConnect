@@ -18,7 +18,6 @@ class AdminLogin extends React.Component {
     }
 
     onSubmit() {
-        console.log("somethiong");
         axios.post(`/fnb_password`, {
             password: this.form.password
         }).then(res => {

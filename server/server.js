@@ -52,6 +52,14 @@ app.post('/fnb_password', (req, res) => {
     }
 });
 
+app.post('/fnb_delete', (req, res) => {
+    let objectId = req.body.objectId;
+    console.log("are we getting it correctly?");
+    console.log(objectId);
+    FoodSubmission.remove( {_id : { "$oid" : objectId }});
+    res.status(200).send("successful delete!");
+});
+
 app.get('/fnb_get', (req, res) => {
     // let startOfWeek = new Date(moment().startOf('week').toISOString());
     // let endOfWeek = new Date(moment().endOf('week').toISOString());
@@ -59,7 +67,7 @@ app.get('/fnb_get', (req, res) => {
     // FoodSubmission.find({date: {$gte: startOfWeek, $lte: endOfWeek}}, '-_id -__v -updatedAt -createdAt', function (err, doc) {
     //     res.json(doc ? doc : {});
     // })
-    FoodSubmission.find({date: {$gte: today}}, '-_id -__v -updatedAt -createdAt', function (err, doc) {
+    FoodSubmission.find({date: {$gte: today}}, '-__v -updatedAt -createdAt', function (err, doc) {
         res.json(doc ? doc : {});
     }).sort({date: 1})
 
