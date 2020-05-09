@@ -56,8 +56,13 @@ app.post('/fnb_delete', (req, res) => {
     let objectId = req.body.objectId;
     console.log("are we getting it correctly?");
     console.log(objectId);
-    FoodSubmission.remove( {_id : { "$oid" : objectId }});
-    res.status(200).send("successful delete!");
+    FoodSubmission.deleteOne( {_id : objectId} )
+        .then(() => {
+            res.status(200).send("successful delete!");
+        })
+        .catch((err) => {
+            throw err;
+        });
 });
 
 app.get('/fnb_get', (req, res) => {

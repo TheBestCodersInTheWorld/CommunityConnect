@@ -4,8 +4,7 @@ import axios from 'axios';
 
 import ResultsTable from './ResultsTable'
 import FoodSubmissionForm from './FoodSubmissionForm';
-var moment = require('moment');
-
+import moment from 'moment';
 
 class Home extends React.Component {
     constructor(props) {
@@ -25,7 +24,7 @@ class Home extends React.Component {
                 var data = res.data;
                 if (data === []) return;
                 for (let i = 0; i < data.length; i++) {
-                    console.log(data[i])
+                    // console.log(data[i])
                     if (data[i].date) {
                         data[i].date = moment(data[i].date).format('MM-DD-YYYY');
                         data[i].canGo = data[i].canGo ? "yes" : "no";
@@ -39,6 +38,7 @@ class Home extends React.Component {
                         key: key,
                     })
                 })
+                console.log(this.state.data);
                 this.setState({ columns, data })
             })
             .catch(function (error) {
